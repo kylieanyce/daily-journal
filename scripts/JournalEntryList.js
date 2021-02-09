@@ -1,10 +1,10 @@
-import { useJournalEntries } from "./JournalDataEntry.js"
+import { useJournalEntries, getEntries } from "./JournalDataEntry.js"
 import { Entry } from "./JournalEntry.js"
 
 const entryLog = document.querySelector(".largeEntries")
 
 export const EntryListComponent = () => {
-    
+    getEntries()
     const entries = useJournalEntries()
 
     let entryHTMLrep = ""
