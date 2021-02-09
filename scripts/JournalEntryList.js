@@ -5,16 +5,21 @@ const entryLog = document.querySelector(".largeEntries")
 
 export const EntryListComponent = () => {
     getEntries()
-    const entries = useJournalEntries()
+    .then(() => {
+        const entries = useJournalEntries()
+        render(entries)
+    })
+}
 
+const render = (entries) => {
     let entryHTMLrep = ""
     for (const entry of entries) {
         entryHTMLrep += Entry(entry)
         
         entryLog.innerHTML = `
-            <section class="entries">
-            ${entryHTMLrep}
-            </section>
+        <section class="entries">
+        ${entryHTMLrep}
+        </section>
         `
     }
 }
