@@ -1,12 +1,56 @@
 body {
 	font-family: 'Montserrat Alternates', sans-serif;
 	font-size: 20px;
+	margin: 0;
 }
-form {
+header {
+	background-color: midnightblue;
+	text-align: center;
+	padding-bottom: 20px;
+	color: lightgrey;
+}
+footer {
+	background-color: midnightblue;
+	color: lightgrey;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 50px;
+}
+.contentContainer {
 	display: flex;
 }
-fieldset {
+.containerLeft {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	flex: 1 1;
+	background-color: purple;
+	text-align: center;
+}
+.containerRight {
+	display: flex;
+	flex: 3 3;
+	flex-direction: column;
+	background-color: darkturquoise;
+	text-align: center;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	background-color: lightgreen;
+	padding: 30px;
+}
+.formCard {
+	padding: 5px;
+}
+.formButton {
+	padding: 5px;
+	text-align: center;
+}
+.entryList__entries {
+	padding: 30px 40px 30px 0;
+}
+.entryCard {
+	border: 2px solid midnightblue;
+	padding: 10px;
+	margin: 30px;
 }
