@@ -2,18 +2,18 @@ const contentTarget = document.querySelector(".largeForm__smallForm")
 
 const render = () => {
     contentTarget.innerHTML = `
-        <fieldset>
-            <label for="journalDate">Date of entry</label>
-            <input type="date" name="journalDate" id="journalDate">
+        <fieldset class="form">
+            <label class="formCard" for="journalDate">Date of entry</label>
+            <input class="formCard" type="date" name="journalDate" id="journalDate">
 
-            <label for="concepts">Topics Covered</label>
-            <input type="text">
+            <label class="formCard" for="concepts">Topics Covered</label>
+            <input class="formCard" type="text">
 
-            <label for="journalEntry">Write Here</label>
-            <textarea name="journalEntry" id="journalEntry" cols="30" rows="10"></textarea>
+            <label class="formCard" for="journalEntry">Write Here</label>
+            <textarea class="formCard" name="journalEntry" id="journalEntry" cols="30" rows="10"></textarea>
             
-            <label for="mood">Mood</label>
-            <select name="mood" id="mood">
+            <label class="formCard" for="mood">Mood</label>
+            <select class="formCard" name="mood" id="mood">
                 <option value="happyOption">Happy</option>
                 <option value="caffeinatedOption">Caffeinated</option>
                 <option value="sleepyOption">Sleepy</option>
@@ -24,7 +24,7 @@ const render = () => {
                 <option value="intelligentOption">Intelligent</option>
             </select>
 
-            <button>Submit Entry</button>
+            <div class="formButton"><button class="button">Submit Entry</button></div>
         </fieldset>
     `
 }
