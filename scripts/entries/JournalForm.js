@@ -18,7 +18,6 @@ eventHub.addEventListener("click", event => {
             "text": text,
             "mood": mood
         }
-        console.log(newEntry)
         saveEntry(newEntry)
     }
 })
