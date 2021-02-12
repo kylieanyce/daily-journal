@@ -6,7 +6,7 @@ export const Entry = (entry) => {
             </div>
             <div class="largeEntries__smallEntries">
                 <div class="entryCard">
-                    <p>${entry.date}</p>
+                    <p>${new Date(entry.date).toLocaleDateString('en-US')}</p>
                     <p>${entry.text}</p>
                     <p>${entry.mood}</p>
                 </div>
