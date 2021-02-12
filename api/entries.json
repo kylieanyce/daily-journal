@@ -5,28 +5,62 @@
       "date": "07/24/2025",
       "concept": "HTML & CSS",
       "text": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-      "mood": "Happy"
+      "moodId": 1
     },
     {
       "id": 2,
       "date": "07/26/2025",
       "concept": "Javascript",
       "text": "We learned about Javascript functions and array methods.",
-      "mood": "Confused"
+      "moodId": 7
     },
     {
       "id": 3,
       "date": "07/28/2025",
       "concept": "Javascript and CSS",
       "text": "We talked about how to style elements after using Javascript.",
-      "mood": "Accomplished"
+      "moodId": 5
     },
     {
+      "id": 4,
       "date": "2021-02-12",
       "concept": "API fetching and posting",
       "text": "We learned how to fetch data from the API and post data to the API. It was really hard at first but now I feel much more confident!",
-      "mood": "accomplishedOption",
-      "id": 4
+      "moodId": 5
+    }
+  ],
+  "moods": [
+    {
+      "id": 1,
+      "label": "Happy"
+    },
+    {
+      "id": 2,
+      "label": "Caffeinated"
+    },
+    {
+      "id": 3,
+      "label": "Sleepy"
+    },
+    {
+      "id": 4,
+      "label": "Exhausted"
+    },
+    {
+      "id": 5,
+      "label": "Accomplished"
+    },
+    {
+      "id": 6,
+      "label": "Overwhelmed"
+    },
+    {
+      "id": 7,
+      "label": "Confused"
+    },
+    {
+      "id": 8,
+      "label": "Intelligent"
     }
   ]
 }

@@ -12,7 +12,7 @@ export const useJournalEntries = () => {
 }
 //gets entries from API---------------------------------------------------------
 export const getEntries = () => {
-    return fetch("http://localhost:8088/entries")
+    return fetch("http://localhost:8088/entries?_expand=mood")
     .then(response => response.json())
     .then(
         parsedEntries => {
@@ -22,7 +22,7 @@ export const getEntries = () => {
 
 //saves entries to API and brings have new list of updated entries---------------
 export const saveEntry = (entry) => {
-    return fetch("http://localhost:8088/entries", {
+    return fetch("http://localhost:8088/entries?_expand=mood", {
         //post method saves entries to API
         method: "POST",
         headers: {

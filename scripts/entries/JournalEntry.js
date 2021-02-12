@@ -8,7 +8,8 @@ export const Entry = (entry) => {
                 <div class="entryCard">
                     <p>${new Date(entry.date).toLocaleDateString('en-US')}</p>
                     <p>${entry.text}</p>
-                    <p>${entry.mood}</p>
+                    <p>${entry.mood.label}</p>
+                    <p>${entry.mood.id}</p>
                 </div>
             </div>
         </section>

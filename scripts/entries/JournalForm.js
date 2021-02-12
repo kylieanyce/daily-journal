@@ -1,4 +1,5 @@
 import { saveEntry } from "./JournalProvider.js"
+import { getMoods , useMoods } from "./MoodProvider.js"
 
 const contentTarget = document.querySelector(".largeForm__smallForm")
 const eventHub = document.querySelector("#container")
@@ -23,10 +24,14 @@ eventHub.addEventListener("click", event => {
 })
 
 export const EntryForm = () => {
-    render()
+    getMoods()
+    .then(() => {
+        const allMoods = useMoods()
+        render(allMoods)
+    })
 }
 
-const render = () => {
+const render = (allMoods) => {
     contentTarget.innerHTML = `
         <fieldset class="form">
             <label class="formCard" for="journalDate">Date of entry</label>
@@ -40,14 +45,13 @@ const render = () => {
             
             <label class="formCard" for="mood">Mood</label>
             <select class="formCard" name="mood" id="mood">
-                <option value="happyOption">Happy</option>
-                <option value="caffeinatedOption">Caffeinated</option>
-                <option value="sleepyOption">Sleepy</option>
-                <option value="exhaustedOption">Exhausted</option>
-                <option value="accomplishedOption">Accomplished</option>
-                <option value="overwhelmedOption">Overwhelmed</option>
-                <option value="confusedOption">Confused</option>
-                <option value="intelligentOption">Intelligent</option>
+            ${
+                allMoods.map(
+                    (mood) => {
+                        return `<option value="${ mood.id }">${ mood.label }</option>`
+                    }
+                ).join("")
+            }
             </select>
 
             <div><button id="formButton" class="button">Submit Entry</button></div>
