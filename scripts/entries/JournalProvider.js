@@ -4,6 +4,7 @@ let journal = []
 
 //returns copy of entries sorted by the date---------------------------------
 export const useJournalEntries = () => {
+    //iterates through journal entry array
     const sortedByDate = journal.sort(
         (currentEntry, nextEntry) => { 
             Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
@@ -12,7 +13,7 @@ export const useJournalEntries = () => {
 }
 //gets entries from API---------------------------------------------------------
 export const getEntries = () => {
-    return fetch("http://localhost:8088/entries")
+    return fetch("http://localhost:8088/entries?_expand=mood")
     .then(response => response.json())
     .then(
         parsedEntries => {
@@ -22,7 +23,7 @@ export const getEntries = () => {
 
 //saves entries to API and brings have new list of updated entries---------------
 export const saveEntry = (entry) => {
-    return fetch("http://localhost:8088/entries", {
+    return fetch("http://localhost:8088/entries?_expand=mood", {
         //post method saves entries to API
         method: "POST",
         headers: {
