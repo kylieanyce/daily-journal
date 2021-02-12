@@ -42,7 +42,7 @@ footer {
 .formCard {
 	padding: 5px;
 }
-.formButton {
+#formButton {
 	padding: 5px;
 	text-align: center;
 }

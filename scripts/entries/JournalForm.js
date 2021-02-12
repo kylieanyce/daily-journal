@@ -1,4 +1,31 @@
+import { saveEntry } from "./JournalProvider.js"
+
 const contentTarget = document.querySelector(".largeForm__smallForm")
+const eventHub = document.querySelector("#container")
+
+eventHub.addEventListener("click", event => {
+    if (event.target.id === "formButton") {
+        event.preventDefault()
+
+        const date = document.getElementById("journalDate").value
+        const concept = document.getElementById("journalConcept").value
+        const text = document.getElementById("journalEntry").value
+        const mood = document.getElementById("mood").value
+
+        const newEntry = {
+            "date": date,
+            "concept": concept,
+            "text": text,
+            "mood": mood
+        }
+        console.log(newEntry)
+        saveEntry(newEntry)
+    }
+})
+
+export const EntryForm = () => {
+    render()
+}
 
 const render = () => {
     contentTarget.innerHTML = `
@@ -7,7 +34,7 @@ const render = () => {
             <input class="formCard" type="date" name="journalDate" id="journalDate">
 
             <label class="formCard" for="concepts">Topics Covered</label>
-            <input class="formCard" type="text">
+            <input class="formCard" type="text" id="journalConcept">
 
             <label class="formCard" for="journalEntry">Write Here</label>
             <textarea class="formCard" name="journalEntry" id="journalEntry" cols="30" rows="10"></textarea>
@@ -24,13 +51,11 @@ const render = () => {
                 <option value="intelligentOption">Intelligent</option>
             </select>
 
-            <div class="formButton"><button class="button">Submit Entry</button></div>
+            <div><button id="formButton" class="button">Submit Entry</button></div>
         </fieldset>
     `
 }
 
-export const EntryForm = () => {
-    render()
-}
+
 
 
