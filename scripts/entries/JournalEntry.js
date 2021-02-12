@@ -1,3 +1,4 @@
+//
 export const Entry = (entry) => {
     return `
         <section id="entry--${entry.id}" class="journalEntry">
