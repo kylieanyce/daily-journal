@@ -4,6 +4,7 @@ let journal = []
 
 //returns copy of entries sorted by the date---------------------------------
 export const useJournalEntries = () => {
+    //iterates through journal entry array
     const sortedByDate = journal.sort(
         (currentEntry, nextEntry) => { 
             Date.parse(currentEntry.date) - Date.parse(nextEntry.date)

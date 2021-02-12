@@ -1,5 +1,6 @@
-//
+//HTML for journal entries--------------------------------------------------------
 export const Entry = (entry) => {
+    //grabs date from entry object and converts into US date form (mm/dd/xxxx)
     return `
         <section id="entry--${entry.id}" class="journalEntry">
             <div class="largeEntries__header">
