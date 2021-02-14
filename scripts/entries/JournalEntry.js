@@ -1,3 +1,7 @@
+import { useJournalEntries } from "./JournalProvider.js"
+
+const eventHub = document.querySelector("#container")
+
 //HTML for journal entries--------------------------------------------------------
 export const Entry = (entry) => {
     //grabs date from entry object and converts into US date form (mm/dd/xxxx)
@@ -11,9 +15,27 @@ export const Entry = (entry) => {
                     <p>${new Date(entry.date).toLocaleDateString('en-US')}</p>
                     <p>${entry.text}</p>
                     <p>${entry.mood.label}</p>
-                    <p>${entry.mood.id}</p>
+                    <button class="deleteEntry" id="delete--${entry.id}">Delete</button>
                 </div>
             </div>
         </section>
     `
 }
+
+eventHub.addEventListener("click", event => {
+    if (event.target.id.startsWith("deleteEntry--")) {
+        const [prefix, entryID] = event.target.id.split("--")
+        const deleteClicked = new CustomEvent("deleteEntryClicked", {
+            detail: {
+                entryId: event.target.entryID
+            }
+        })
+        dispatchEvent(deleteClicked)
+        deleteEntry(entryID).then(
+            () => {
+                const updatedEntries = useJournalEntries()
+                render(updatedEntries)
+            }
+        )
+    }
+})
