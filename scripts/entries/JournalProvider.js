@@ -23,7 +23,7 @@ export const getEntries = () => {
 
 //saves entries to API and brings have new list of updated entries---------------
 export const saveEntry = (entry) => {
-    return fetch("http://localhost:8088/entries?_expand=mood", {
+    return fetch("http://localhost:8088/entries", {
         //post method saves entries to API
         method: "POST",
         headers: {
@@ -33,12 +33,26 @@ export const saveEntry = (entry) => {
         body: JSON.stringify(entry)
     })
         //get updated entries from API
-        .then(getEntries)  
+        // .then(getEntries)  
         //invoke this function
         .then(dispatchStateChangeEvent)  
+}
+
+
+export const deleteEntry = (entryID) => {
+    return fetch(`http://localhost:8088/entries/${entryID}`, {
+        method: "DELETE"
+    })
+        .then(getEntries)
+        .then(dispatchDeleteStateChange)
 }
 
 //creates customEvent that dispatches when entries are saved to API-----------------
 const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))
+}
+
+
+const dispatchDeleteStateChange = () => {
+    eventHub.dispatchEvent(new CustomEvent("deleteStateChanged"))
 }

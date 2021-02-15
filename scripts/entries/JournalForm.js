@@ -1,5 +1,7 @@
-import { saveEntry } from "./JournalProvider.js"
-import { getMoods , useMoods } from "./MoodProvider.js"
+import { EntryListComponent } from "./JournalEntryList.js"
+import { saveEntry, useJournalEntries } from "./JournalProvider.js"
+import { useMoods } from "./MoodProvider.js"
+
 
 const contentTarget = document.querySelector(".largeForm__smallForm")
 const eventHub = document.querySelector("#container")
@@ -21,7 +23,7 @@ eventHub.addEventListener("click", event => {
             "date": date,
             "concept": concept,
             "text": text,
-            "mood": mood
+            "moodId": mood
         }
         //passes new object into saveEntry function
         saveEntry(newEntry)
@@ -30,13 +32,9 @@ eventHub.addEventListener("click", event => {
 
 //grabs mood info from API and sends to render function--------------------------
 export const EntryForm = () => {
-    //grabs mood selection from API
-    getMoods()
-    .then(() => {
         //copies array of moods
         const allMoods = useMoods()
         render(allMoods)
-    })
 }
 
 //creates HTML for form and sends to DOM--------------------------------------------
