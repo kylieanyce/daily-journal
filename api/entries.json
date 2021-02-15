@@ -34,27 +34,6 @@
       "text": "hard then heasy",
       "moodId": "1",
       "id": 5
-    },
-    {
-      "date": "2021-02-20",
-      "concept": "add",
-      "text": "boop",
-      "moodId": "7",
-      "id": 6
-    },
-    {
-      "date": "2021-02-19",
-      "concept": "boop",
-      "text": "hehe",
-      "moodId": "5",
-      "id": 7
-    },
-    {
-      "date": "2021-02-12",
-      "concept": "bee",
-      "text": "boo",
-      "moodId": "6",
-      "id": 8
     }
   ],
   "moods": [

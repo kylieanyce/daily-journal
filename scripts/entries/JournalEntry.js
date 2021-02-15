@@ -1,6 +1,27 @@
-import { useJournalEntries } from "./JournalProvider.js"
+import { EntryListComponent } from "./JournalEntryList.js"
+import { deleteEntry } from "./JournalProvider.js"
 
 const eventHub = document.querySelector("#container")
+
+eventHub.addEventListener("click", event => {
+    if (event.target.id.startsWith("delete--")) {
+        const [prefix, entryID] = event.target.id.split("--")
+        const deleteClicked = new CustomEvent("deleteEntryClicked", {
+            detail: {
+                entryId: event.target.entryID
+            }
+        })
+        dispatchEvent(deleteClicked)
+        deleteEntry(entryID)
+        .then(EntryListComponent)
+        // (
+            // () => {
+                // const updatedEntries = useJournalEntries()
+                // render(updatedEntries)
+    // })
+        
+    }
+})
 
 //HTML for journal entries--------------------------------------------------------
 export const Entry = (entry) => {
@@ -21,21 +42,3 @@ export const Entry = (entry) => {
         </section>
     `
 }
-
-eventHub.addEventListener("click", event => {
-    if (event.target.id.startsWith("deleteEntry--")) {
-        const [prefix, entryID] = event.target.id.split("--")
-        const deleteClicked = new CustomEvent("deleteEntryClicked", {
-            detail: {
-                entryId: event.target.entryID
-            }
-        })
-        dispatchEvent(deleteClicked)
-        deleteEntry(entryID).then(
-            () => {
-                const updatedEntries = useJournalEntries()
-                render(updatedEntries)
-            }
-        )
-    }
-})

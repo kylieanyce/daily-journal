@@ -33,14 +33,14 @@ export const saveEntry = (entry) => {
         body: JSON.stringify(entry)
     })
         //get updated entries from API
-        .then(getEntries)  
+        // .then(getEntries)  
         //invoke this function
         .then(dispatchStateChangeEvent)  
 }
 
 
 export const deleteEntry = (entryID) => {
-    return fetch(`http://localhost:8088/entries${entryID}`, {
+    return fetch(`http://localhost:8088/entries/${entryID}`, {
         method: "DELETE"
     })
         .then(getEntries)
