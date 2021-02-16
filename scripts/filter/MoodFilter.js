@@ -9,7 +9,7 @@ export const MoodFilter = (allMoods) => {
                 allMoods.map(
                     (mood) => {
                         return `<input type="radio" name="moodFilter" value="${ mood.id }"/>
-                        <label for="moodFilter--${mood.label}">${ mood.label }</label>
+                        <label for="moodFilter">${ mood.label }</label>
                         `
                     }
                 ).join("")
@@ -22,11 +22,12 @@ export const MoodFilter = (allMoods) => {
 eventHub.addEventListener("change", event => {
     if (event.target.name.startsWith("moodFilter")) {
         const moodID = event.target.value
+        // console.log(moodID)
         const moodSelected = new CustomEvent("moodSelect", {
             detail: {
                 moodid: moodID
             }
         })
-        dispatchEvent(moodSelected)
+        eventHub.dispatchEvent(moodSelected)
     }
 })

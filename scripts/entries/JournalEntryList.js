@@ -1,5 +1,6 @@
 import { useJournalEntries, getEntries } from "./JournalProvider.js"
 import { Entry } from "./JournalEntry.js"
+import { useMoods } from "./MoodProvider.js"
 
 const entryLog = document.querySelector(".largeEntries")
 const eventHub = document.querySelector("#container")
@@ -8,6 +9,18 @@ const eventHub = document.querySelector("#container")
 eventHub.addEventListener("journalStateChanged", event => {
     EntryListComponent()
 })
+
+let filteredEntry = []
+
+eventHub.addEventListener("moodSelect", event => {
+    const moodId = event.detail.moodid
+    const allEntries = useJournalEntries()
+    filteredEntry = allEntries.filter(entry => {
+        return entry.moodId === parseInt(moodId)
+    })
+    render(filteredEntry)
+})
+
 
 //gets entry list from API and sends to render function------------------------------
 export const EntryListComponent = () => {
@@ -27,11 +40,11 @@ const render = (entries) => {
         //passes each object into Entry function that converts to HTML
         entryHTMLrep += Entry(entry)
         //creates section for array of objects converted to HTML to go
-        entryLog.innerHTML = `
-        <h2>Journal Entries</h2>
-        <section class="entries">
-        ${entryHTMLrep}
-        </section>
-        `
     }
+    entryLog.innerHTML = `
+    <h2>Journal Entries</h2>
+    <section class="entries">
+    ${entryHTMLrep}
+    </section>
+    `
 }
