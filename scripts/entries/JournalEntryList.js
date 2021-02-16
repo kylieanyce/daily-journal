@@ -28,6 +28,7 @@ const render = (entries) => {
         entryHTMLrep += Entry(entry)
         //creates section for array of objects converted to HTML to go
         entryLog.innerHTML = `
+        <h2>Journal Entries</h2>
         <section class="entries">
         ${entryHTMLrep}
         </section>

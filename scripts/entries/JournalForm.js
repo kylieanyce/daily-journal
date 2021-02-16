@@ -16,7 +16,7 @@ eventHub.addEventListener("click", event => {
         const date = document.getElementById("journalDate").value
         const concept = document.getElementById("journalConcept").value
         const text = document.getElementById("journalEntry").value
-        const mood = document.getElementById("mood").value
+        const mood = parseInt(document.getElementById("mood").value)
         //creates new object
         const newEntry = {
             //creates new keys and puts vars into properties

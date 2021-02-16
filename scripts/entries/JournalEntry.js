@@ -29,7 +29,7 @@ export const Entry = (entry) => {
     return `
         <section id="entry--${entry.id}" class="journalEntry">
             <div class="largeEntries__header">
-                <h2>${entry.concept}</h2>
+                <h3>${entry.concept}</h3>
             </div>
             <div class="largeEntries__smallEntries">
                 <div class="entryCard">
